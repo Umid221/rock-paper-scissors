@@ -1,41 +1,37 @@
 var Table = require("cli-table");
 const { findWinner } = require("./utils");
 
-function logOptions(params) {
+function logOptions(moves) {
   console.log("Available moves:");
-  for (let i = 0; i < params.length; i++) {
-    console.log(`${i + 1} - ${params[i]}`);
-  }
+  moves.forEach((move, index) => console.log(`${index + 1} - ${move}`));
   console.log(`0 - exit`);
   console.log(`? - help`);
 }
 
-function logHelpTable(params) {
+function logHelpTable(moves) {
   var table = new Table({
-    head: ["v PC\\User >", ...params],
+    head: ["v PC\\User >", ...moves],
   });
 
-  const winningCasesCount = Math.floor(params.length / 2);
-  let tableData = {};
-  for (let i = 0; i < params.length; i++) {
-    const newItem = [params[i]];
-    for (let j = 0; j < params.length; j++) {
-      if (params[i] === params[j]) {
-        // newItem[[params[j]]] = "draw";
-        newItem.push("Draw");
-      } else if (i <= winningCasesCount) {
-        newItem[[params[j]]] =
-          j > i && j <= i + winningCasesCount
-            ? newItem.push("Win")
-            : newItem.push("Lose");
+  const halfMoves = Math.floor(moves.length / 2);
+  for (let i = 0; i < moves.length; i++) {
+    const newRow = [moves[i]];
+    for (let j = 0; j < moves.length; j++) {
+      if (moves[i] === moves[j]) {
+        newRow.push("Draw");
+      } else if (i <= halfMoves) {
+        newRow[[moves[j]]] =
+          j > i && j <= i + halfMoves
+            ? newRow.push("Win")
+            : newRow.push("Lose");
       } else {
-        newItem[[params[j]]] =
-          j < i && j >= i - winningCasesCount
-            ? newItem.push("Lose")
-            : newItem.push("Win");
+        newRow[[moves[j]]] =
+          j < i && j >= i - halfMoves
+            ? newRow.push("Lose")
+            : newRow.push("Win");
       }
     }
-    table.push(newItem);
+    table.push(newRow);
   }
 
   console.log(table.toString());

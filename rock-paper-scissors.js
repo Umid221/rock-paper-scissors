@@ -14,10 +14,7 @@ async function getUserInput() {
   console.log("---New Game Started---");
   const hmacKey = generateRandomKey();
   const computerMove = getComputerMove(moves);
-
-  await generateAndCalculateHMAC(hmacKey, computerMove).then((res) => {
-    console.log("HMAC: " + res);
-  });
+  generateAndCalculateHMAC(hmacKey, computerMove);
   logOptions(moves);
 
   const rl = readline.createInterface({

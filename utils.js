@@ -1,14 +1,14 @@
-function isArgsValid(args) {
-  const uniqueArgs = Array.from(new Set(args));
+function isArgsValid(moves) {
+  const uniqueMoves = Array.from(new Set(moves));
 
-  if (args.length < 3) {
-    console.log(`You have entered ${args.length} arguments.`);
+  if (moves.length < 3) {
+    console.log(`You have entered ${moves.length} arguments.`);
     console.log("You must provide at least 3 arguments");
     return false;
-  } else if (args.length % 2 === 0) {
+  } else if (moves.length % 2 === 0) {
     console.log("you must provide odd number of arguments");
     return false;
-  } else if (args.length !== uniqueArgs.length) {
+  } else if (moves.length !== uniqueMoves.length) {
     console.log("You must provide non-repeating strings as arguments");
     return false;
   }

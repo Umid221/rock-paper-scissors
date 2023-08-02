@@ -15,10 +15,10 @@ function calculateHMAC_SHA3_256(key, data) {
   return hmac.digest("hex");
 }
 
-async function generateAndCalculateHMAC(key, move) {
+function generateAndCalculateHMAC(key, move) {
   try {
     const hmacSHA3_256 = calculateHMAC_SHA3_256(key, move);
-    return hmacSHA3_256;
+    console.log("HMAC: " + hmacSHA3_256);
   } catch (error) {
     console.error("Error: ", error.message);
   }
