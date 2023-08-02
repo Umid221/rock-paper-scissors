@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 const readline = require("readline");
-const { generateAndCalculateHMAC, generateRandomKey } = require("./security");
-const { logOptions, logHelpTable } = require("./loggers");
-const { getComputerMove, isArgsValid } = require("./utils");
+const {
+  generateAndCalculateHMAC,
+  generateRandomKey,
+  getComputerMove,
+} = require("./security");
+const { logOptions, logHelpTable, logResult } = require("./loggers");
+const { isArgsValid } = require("./utils");
 
 const moves = process.argv.slice(2);
 

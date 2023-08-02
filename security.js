@@ -4,6 +4,11 @@ function generateRandomKey() {
   return crypto.randomBytes(32).toString("hex");
 }
 
+function getComputerMove(moves) {
+  const randomIndex = crypto.randomInt(0, moves.length);
+  return moves[randomIndex];
+}
+
 function calculateHMAC_SHA3_256(key, data) {
   const hmac = crypto.createHmac("sha3-256", key);
   hmac.update(data);
@@ -22,4 +27,5 @@ async function generateAndCalculateHMAC(key, move) {
 module.exports = {
   generateAndCalculateHMAC,
   generateRandomKey,
+  getComputerMove,
 };

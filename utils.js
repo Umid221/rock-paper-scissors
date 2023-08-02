@@ -15,11 +15,6 @@ function isArgsValid(args) {
   return true;
 }
 
-function getComputerMove(moves) {
-  const randomIndex = crypto.randomInt(0, moves.length);
-  return moves[randomIndex];
-}
-
 function findWinner(playerMoveIndex, computerMove, moves) {
   const computerIndex = moves.indexOf(computerMove);
   const halfMoves = Math.floor(moves.length / 2);
@@ -40,6 +35,5 @@ function findWinner(playerMoveIndex, computerMove, moves) {
 
 module.exports = {
   isArgsValid,
-  getComputerMove,
   findWinner,
 };

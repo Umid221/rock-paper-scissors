@@ -12,7 +12,7 @@ function logOptions(params) {
 
 function logHelpTable(params) {
   var table = new Table({
-    head: ["name", ...params],
+    head: ["v PC\\User >", ...params],
   });
 
   const winningCasesCount = Math.floor(params.length / 2);
